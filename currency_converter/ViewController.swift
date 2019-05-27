@@ -58,11 +58,6 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if fromName == "" {
-            toSelector.isEnabled = false
-        } else {
-            toSelector.isEnabled = true
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -150,6 +145,9 @@ class ViewController: UIViewController {
     }
     
     func callForCurrencyList() {
+        if !Connectivity.isConnectedToInternet() {
+            return
+        }
         let url: String = Connectivity.BASE_URL+"list?access_key="+Connectivity.apiKey+"&format=1"
         AF.request(url).responseJSON { response in
             do {
@@ -164,6 +162,11 @@ class ViewController: UIViewController {
     }
 
     func callForCurrencyRates(from: String) {
+        
+        if !Connectivity.isConnectedToInternet() {
+            return
+        }
+        
         let url: String = Connectivity.BASE_URL + "live?source="+from+"&access_key="+Connectivity.apiKey+"&format=1"
         AF.request(url).responseJSON { response in
             do {
@@ -289,6 +292,13 @@ class ViewController: UIViewController {
         selectorMode = "to"
         if self.currencyNames.count > 0 {
             performSegue(withIdentifier: "fromToSeg", sender: sender)
+        } else {
+            let alertVC = PMAlertController(title: "First select source currency pressing \"From:\" button", description: "", image: UIImage(named: ""), style: .alert)
+            
+            alertVC.addAction(PMAlertAction(title: NSLocalizedString("CLOSE", comment:"close"), style: .cancel, action: { () -> Void in
+            }))
+            
+            self.present(alertVC, animated: true, completion: nil)
         }
     }
     

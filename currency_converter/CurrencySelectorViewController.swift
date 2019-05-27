@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import PMAlertController
 
 class CurrencySelectorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
     var currencyNames: [String] = []
     var descriptions: [String:String] = [:]
     var rates: [String] = []
@@ -21,7 +21,6 @@ class CurrencySelectorViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var currenciesTable: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(currencyNames.count)
         return currencyNames.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,6 +32,20 @@ class CurrencySelectorViewController: UIViewController, UITableViewDelegate, UIT
         
         currenciesTable.delegate = self
         currenciesTable.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !Connectivity.isConnectedToInternet() {
+            let alertVC = PMAlertController(title: "Check your internet connection!", description: "", image: UIImage(named: "network.png"), style: .alert)
+            
+            alertVC.addAction(PMAlertAction(title: NSLocalizedString("CLOSE", comment:"close"), style: .cancel, action: { () -> Void in
+            }))
+            
+            self.present(alertVC, animated: true, completion: nil)
+            //            return
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,12 +70,10 @@ class CurrencySelectorViewController: UIViewController, UITableViewDelegate, UIT
             textToShow += " / " + rates[indexPath.row]
         }
         cell.textLabel?.text = textToShow
-        print(currencyNames[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You selected cell number: \(indexPath.row)!")
         rowNumber = indexPath.row
         performSegue(withIdentifier: "setCurrency", sender: nil)
     }

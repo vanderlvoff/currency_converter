@@ -10,7 +10,6 @@ import UIKit
 
 class CurrencyCell: UICollectionViewCell {
 
-    
     @IBOutlet weak var currencyName: UILabel!
     @IBOutlet weak var currencyLongName: UILabel!
     @IBOutlet weak var currencyRate: UILabel!

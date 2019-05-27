@@ -153,19 +153,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sume:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yv4-tU-dKi">
-                                <rect key="frame" x="20" y="262" width="47" height="21"/>
+                                <rect key="frame" x="25" y="262" width="47" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ci-RB-ZfX">
+                                <rect key="frame" x="342" y="264" width="52" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4ci-RB-ZfX" secondAttribute="trailing" constant="20" id="C7h-KA-RVq"/>
                             <constraint firstItem="Q1W-8i-vz2" firstAttribute="top" secondItem="3di-ny-J6G" secondAttribute="bottom" constant="16" id="CLw-TQ-tZn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2K5-Wq-3JR" secondAttribute="bottom" id="FRT-D5-dZK"/>
                             <constraint firstItem="2K5-Wq-3JR" firstAttribute="top" secondItem="Q1W-8i-vz2" secondAttribute="bottom" constant="15" id="H3s-Dp-XhX"/>
                             <constraint firstItem="fxd-Oo-cTQ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="70" id="Ibc-G0-fx6"/>
-                            <constraint firstItem="Q1W-8i-vz2" firstAttribute="leading" secondItem="yv4-tU-dKi" secondAttribute="trailing" constant="10" id="J4Y-Py-xX3"/>
+                            <constraint firstItem="Q1W-8i-vz2" firstAttribute="leading" secondItem="yv4-tU-dKi" secondAttribute="trailing" constant="5" id="J4Y-Py-xX3"/>
                             <constraint firstItem="2La-WQ-in7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MJr-7p-j3X"/>
                             <constraint firstItem="3di-ny-J6G" firstAttribute="top" secondItem="WxQ-bN-BlS" secondAttribute="bottom" id="N3D-rB-jBI"/>
                             <constraint firstItem="WxQ-bN-BlS" firstAttribute="width" secondItem="Q1W-8i-vz2" secondAttribute="width" id="PKG-gY-LNd"/>
@@ -173,6 +180,7 @@
                             <constraint firstItem="fxd-Oo-cTQ" firstAttribute="centerY" secondItem="qzA-dh-xB1" secondAttribute="centerY" id="RBk-tY-Qi4"/>
                             <constraint firstItem="Q1W-8i-vz2" firstAttribute="trailing" secondItem="fxd-Oo-cTQ" secondAttribute="trailing" id="Rhj-4Q-0UA"/>
                             <constraint firstItem="qzA-dh-xB1" firstAttribute="top" secondItem="2La-WQ-in7" secondAttribute="bottom" constant="15" id="TUA-g8-iw4"/>
+                            <constraint firstItem="4ci-RB-ZfX" firstAttribute="leading" secondItem="Q1W-8i-vz2" secondAttribute="trailing" constant="5" id="X5t-oN-eE5"/>
                             <constraint firstItem="WxQ-bN-BlS" firstAttribute="top" secondItem="qzA-dh-xB1" secondAttribute="bottom" constant="8" id="cGS-lx-6lW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2La-WQ-in7" secondAttribute="trailing" id="f4z-TD-cM9"/>
                             <constraint firstItem="Q1W-8i-vz2" firstAttribute="leading" secondItem="qzA-dh-xB1" secondAttribute="leading" id="fxF-jh-iOk"/>
@@ -182,6 +190,7 @@
                             <constraint firstItem="yv4-tU-dKi" firstAttribute="centerY" secondItem="Q1W-8i-vz2" secondAttribute="centerY" id="oWH-WS-yWm"/>
                             <constraint firstItem="WxQ-bN-BlS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pg1-AT-Vda"/>
                             <constraint firstItem="3di-ny-J6G" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tj3-WK-4rZ"/>
+                            <constraint firstItem="4ci-RB-ZfX" firstAttribute="centerY" secondItem="Q1W-8i-vz2" secondAttribute="centerY" id="ud9-rl-83G"/>
                             <constraint firstItem="2K5-Wq-3JR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vV1-Yw-5mj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -192,6 +201,7 @@
                         <outlet property="fromSelector" destination="qzA-dh-xB1" id="r5M-X5-VqH"/>
                         <outlet property="inputTextField" destination="2La-WQ-in7" id="A4a-3M-g5T"/>
                         <outlet property="outputLabel" destination="Q1W-8i-vz2" id="PVK-mY-Uaz"/>
+                        <outlet property="toCurrencyLabel" destination="4ci-RB-ZfX" id="dcX-fF-Gj9"/>
                         <outlet property="toSelector" destination="fxd-Oo-cTQ" id="T7r-Vw-kE3"/>
                         <segue destination="ydC-PK-IyZ" kind="show" identifier="fromToSeg" id="Gnu-JL-bqN"/>
                     </connections>

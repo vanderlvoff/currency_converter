@@ -9,9 +9,9 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import PMAlertController
 
 class ViewController: UIViewController {
-
 
     var json: JSON!
     var currencyNames: [String] = []
@@ -24,13 +24,13 @@ class ViewController: UIViewController {
     let currencyModelObj: CurrencyModel = CurrencyModel()
     var fromRates: [String: Float] = [:]
     var rateToCalculate: Float = 0.0
-    var apiKey = ""
     
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var fromSelector: UIButton!
     @IBOutlet weak var toSelector: UIButton!
     @IBOutlet weak var outputLabel: UILabel!
     @IBOutlet weak var currentRate: UILabel!
+    @IBOutlet weak var toCurrencyLabel: UILabel!
     
     @IBOutlet weak var currencyCollection: UICollectionView!
     override func viewDidLoad() {
@@ -58,11 +58,23 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         if fromName == "" {
             toSelector.isEnabled = false
         } else {
             toSelector.isEnabled = true
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !Connectivity.isConnectedToInternet() {
+            let alertVC = PMAlertController(title: "Check your internet connection!", description: "", image: UIImage(named: "network.png"), style: .alert)
+            
+            alertVC.addAction(PMAlertAction(title: NSLocalizedString("CLOSE", comment:"close"), style: .cancel, action: { () -> Void in
+            }))
+            
+            self.present(alertVC, animated: true, completion: nil)
+            //            return
         }
     }
 
@@ -106,6 +118,8 @@ class ViewController: UIViewController {
             toName = ""
         }
         
+        toCurrencyLabel.text = toName
+        
         fromSelector.setTitle("From: "+fromName, for: .normal)
         toSelector.setTitle("To: "+toName, for: .normal)
     }
@@ -136,7 +150,7 @@ class ViewController: UIViewController {
     }
     
     func callForCurrencyList() {
-        let url: String = "http://apilayer.net/api/list?access_key="+apiKey+"&format=1"
+        let url: String = Connectivity.BASE_URL+"list?access_key="+Connectivity.apiKey+"&format=1"
         AF.request(url).responseJSON { response in
             do {
                 self.json = try JSON(data: response.data!)
@@ -148,12 +162,12 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+
     func callForCurrencyRates(from: String) {
-        let url: String = "http://apilayer.net/api/live?source="+from+"&access_key="+apiKey+"&format=1"
+        let url: String = Connectivity.BASE_URL + "live?source="+from+"&access_key="+Connectivity.apiKey+"&format=1"
         AF.request(url).responseJSON { response in
             do {
-                self.json = try JSON(data: response.data!)
+                self.json = try JSON(data: response.data ?? Data())
                 self.writeListToDb(nameToWrite: from)
                 self.setNamesAndRates(anotherObj: self.json)
                 
@@ -164,6 +178,9 @@ class ViewController: UIViewController {
         }
     }
     
+    /**
+     * Loading rate list basing on "from" value
+     */
     func getRatesUsingFrom() {
         let currencyList = currencyModelObj.getDataByName(paramName: fromName)
         let timeNow = Int64(NSDate().timeIntervalSince1970)
@@ -192,6 +209,9 @@ class ViewController: UIViewController {
         }
     }
     
+    /**
+     * Creating all currency rate list
+     */
     func setNamesAndRates(anotherObj: JSON) {
         currencyNames = []
         currencyRates = []
@@ -209,6 +229,9 @@ class ViewController: UIViewController {
         calculateSume()
     }
     
+    /**
+     * Creating all currency list
+     */
     func setNamesAndDescriptions(anotherObj: JSON) {
         allCurrencyNames = []
         currencyDescriptions = [:]
@@ -220,6 +243,9 @@ class ViewController: UIViewController {
         currencyCollection.reloadData()
     }
     
+    /**
+     * Currency converter.
+     */
     func calculateSume() {
         let rateKey = fromName+toName
 
@@ -246,16 +272,29 @@ class ViewController: UIViewController {
         }
     }
     
+    /**
+     * Select source currency
+     */
     @IBAction func selectFrom(_ sender: Any) {
         selectorMode = "from"
-        performSegue(withIdentifier: "fromToSeg", sender: sender)
+        if self.allCurrencyNames.count > 0 {
+            performSegue(withIdentifier: "fromToSeg", sender: sender)
+        }
     }
     
+    /**
+    * Select destination currency
+    */
     @IBAction func selectTo(_ sender: Any) {
         selectorMode = "to"
-        performSegue(withIdentifier: "fromToSeg", sender: sender)
+        if self.currencyNames.count > 0 {
+            performSegue(withIdentifier: "fromToSeg", sender: sender)
+        }
     }
     
+    /**
+     * Writing currency list to DB
+     */
     func writeListToDb(nameToWrite: String) {
         currencyModelObj._name = nameToWrite
         
@@ -268,8 +307,10 @@ class ViewController: UIViewController {
         currencyModelObj.saveRow()
     }
     
+    /**
+    * Passing lists to currency select view
+    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "fromToSeg" {
             if let viewController = segue.destination as? CurrencySelectorViewController {
                 if selectorMode == "from" {
@@ -285,6 +326,9 @@ class ViewController: UIViewController {
         }
     }
     
+    /**
+     * Getting from DB converted destination(sume) value once saved into Sqlite DB
+     */
     func handleInputSume() {
         let inputSume = currencyModelObj.getDataByName(paramName: "inputSume")
         var text = ""
@@ -295,10 +339,12 @@ class ViewController: UIViewController {
             } catch {
                 //do nothing
             }
-            
         }
     }
     
+    /**
+     * Getting from DB converted output value once saved into Sqlite DB
+     */
     func handleOutputSume() {
         let outputSume = currencyModelObj.getDataByName(paramName: "outputSume")
         var text = ""
@@ -309,7 +355,6 @@ class ViewController: UIViewController {
             } catch {
                 //do nothing
             }
-            
         }
     }
 }
@@ -333,7 +378,6 @@ extension ViewController: UICollectionViewDataSource {
             cell.currencyName.text = allCurrencyNames[indexPath.row]
             cell.currencyLongName.text = currencyDescriptions[allCurrencyNames[indexPath.row]]
         }
-       
         return cell
     }
     
@@ -349,20 +393,5 @@ extension ViewController: UICollectionViewDataSource {
 extension UIButton {
     func roundedCorners() {
         self.layer.cornerRadius = 5
-    }
-}
-
-class PaddingTextField: UITextField {
-    
-    @IBInspectable var paddingLeft: CGFloat = 0
-    @IBInspectable var paddingRight: CGFloat = 0
-    
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(x: bounds.origin.x + paddingLeft, y: bounds.origin.y,
-                      width: bounds.size.width - paddingLeft - paddingRight, height: bounds.size.height);
-    }
-    
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return textRect(forBounds: bounds)
     }
 }

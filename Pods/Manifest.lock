@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.0.0-beta.6)
+  - PMAlertController (4.0.0)
   - SQLite.swift (0.12.0):
     - SQLite.swift/standard (= 0.12.0)
   - SQLite.swift/standard (0.12.0)
@@ -7,20 +8,23 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.5)
+  - PMAlertController
   - SQLite.swift (~> 0.12.0)
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - PMAlertController
     - SQLite.swift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  PMAlertController: 5fad2da8b9eb687134ed50c3462fed12c3afe976
   SQLite.swift: 7cad9db150a03716336e69469ec9559c85aece5b
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 5c87cf59ed336fd5bb0c1459c0366651a2e6bc6e
+PODFILE CHECKSUM: c35a880079ed8828476d3bd18139dfb83534ad2c
 
 COCOAPODS: 1.7.0

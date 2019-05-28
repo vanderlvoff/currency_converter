@@ -54,6 +54,8 @@ class ViewController: UIViewController {
         }
         
         self.addDoneButtonOnKeyboard()
+        outputLabel.layer.cornerRadius = 5
+        outputLabel.layer.masksToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -327,11 +329,14 @@ class ViewController: UIViewController {
                 if selectorMode == "from" {
                     viewController.currencyNames = self.allCurrencyNames
                     viewController.descriptions = self.currencyDescriptions
+                    
                 } else {
                     viewController.currencyNames = self.currencyNames
                     viewController.rates = self.currencyRates
                     viewController.descriptions = self.currencyDescriptions
                 }
+                viewController.fromName = fromName
+                viewController.toName = toName
                 viewController.segDirection = selectorMode
             }
         }
@@ -389,6 +394,16 @@ extension ViewController: UICollectionViewDataSource {
             cell.currencyName.text = allCurrencyNames[indexPath.row]
             cell.currencyLongName.text = currencyDescriptions[allCurrencyNames[indexPath.row]]
         }
+        
+        if currencyNames.indices.contains(indexPath.row) && currencyNames[indexPath.row] == fromName {
+            print("\(currencyNames[indexPath.row]) == \(fromName)")
+            cell.backgroundColor = UIColor(rgb: 0x0096FF)
+        } else if currencyNames.indices.contains(indexPath.row) && currencyNames[indexPath.row] == toName {
+            cell.backgroundColor = UIColor(rgb: 0x4F8F00)
+        } else {
+            cell.backgroundColor = .lightGray
+        }
+        
         return cell
     }
     
@@ -404,5 +419,23 @@ extension ViewController: UICollectionViewDataSource {
 extension UIButton {
     func roundedCorners() {
         self.layer.cornerRadius = 5
+    }
+}
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
     }
 }

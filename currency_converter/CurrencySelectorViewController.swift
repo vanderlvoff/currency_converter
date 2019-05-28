@@ -17,6 +17,8 @@ class CurrencySelectorViewController: UIViewController, UITableViewDelegate, UIT
     var currencyModelObj: CurrencyModel!
     var segDirection: String = ""
     var rowNumber: Int!
+    var fromName = ""
+    var toName = ""
     
     @IBOutlet weak var currenciesTable: UITableView!
     
@@ -70,6 +72,16 @@ class CurrencySelectorViewController: UIViewController, UITableViewDelegate, UIT
             textToShow += " / " + rates[indexPath.row]
         }
         cell.textLabel?.text = textToShow
+        
+        if currencyNames.indices.contains(indexPath.row) && currencyNames[indexPath.row] == fromName {
+            print("\(currencyNames[indexPath.row]) == \(fromName)")
+            cell.backgroundColor = UIColor(rgb: 0x0096FF)
+        } else if currencyNames.indices.contains(indexPath.row) && currencyNames[indexPath.row] == toName {
+            cell.backgroundColor = UIColor(rgb: 0x4F8F00)
+        } else {
+            cell.backgroundColor = UIColor(rgb: 0xDDDDDD)
+        }
+        
         return cell
     }
     

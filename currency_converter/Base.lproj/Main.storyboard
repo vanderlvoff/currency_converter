@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2La-WQ-in7" customClass="PaddingTextField" customModule="currency_converter" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="2La-WQ-in7" customClass="PaddingTextField" customModule="currency_converter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -306,7 +306,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1bu-2K-Qhw"/>
                                 </constraints>
-                                <textInputTraits key="textInputTraits" keyboardType="webSearch"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardType="webSearch"/>
                                 <connections>
                                     <outlet property="delegate" destination="ydC-PK-IyZ" id="XpF-5P-hCr"/>
                                 </connections>

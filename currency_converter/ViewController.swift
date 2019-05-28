@@ -85,7 +85,7 @@ class ViewController: UIViewController {
         doneToolbar.barStyle = UIBarStyle.blackTranslucent
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: Selector(("doneButtonAction")))
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Convert", style: UIBarButtonItem.Style.done, target: self, action: Selector(("doneButtonAction")))
         done.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
 
         let items = NSMutableArray()
@@ -265,9 +265,10 @@ class ViewController: UIViewController {
         currentRate.text = String(rateToCalculate)
         
         if rateToCalculate > 0 {
-            let textedValue = (inputTextField.text == "" ? "0.0" : inputTextField.text)!
+            let textedValue = (inputTextField.text == "" ? "" : inputTextField.text)!
+            let textedValueForCalculations = (inputTextField.text == "" ? "0" : inputTextField.text)!
             let numberFormatter = NumberFormatter()
-            let number = numberFormatter.number(from: textedValue)
+            let number = numberFormatter.number(from: textedValueForCalculations)
             let numberFloatValue = number?.floatValue
             
             var sume: Double = Double(numberFloatValue!*rateToCalculate)*100

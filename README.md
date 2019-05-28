@@ -16,3 +16,7 @@ How to make it working:
 ### Screenshot 2. Network trouble case.
 
 ![3BE2D1DB-3BAC-4A05-9157-510DEB9F5A5E](https://user-images.githubusercontent.com/16252676/58461211-11ffbd00-816a-11e9-927f-5d21abcbee7e.png)
+
+### Screenshot 2. The one with target currency marked.
+
+![C6E858CF-75E3-4C08-9E9E-E10ECB0B40F0](https://user-images.githubusercontent.com/16252676/58462477-f6e27c80-816c-11e9-97f1-5b33f06537ca.png)

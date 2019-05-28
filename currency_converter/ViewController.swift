@@ -229,7 +229,7 @@ class ViewController: UIViewController {
         for (key,subJson):(String, JSON) in anotherObj["quotes"] {
             currencyNames.append(String(key.suffix(3)))
             
-            var rate: Float = Float(subJson.rawString()!) as! Float
+            var rate: Float = Float(subJson.rawString()!) ?? 0.0
             let trueRate = rate
             rate = rate * 1000
             rate = rate.rounded(FloatingPointRoundingRule.toNearestOrEven)/1000
@@ -337,6 +337,7 @@ class ViewController: UIViewController {
                 if selectorMode == "from" {
                     viewController.currencyNames = self.allCurrencyNames
                     viewController.descriptions = self.currencyDescriptions
+                    viewController.rates = []
                     
                 } else {
                     viewController.currencyNames = self.currencyNames

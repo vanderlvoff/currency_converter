@@ -11,7 +11,6 @@
 		638889BA22983A28006F2B06 /* CurrencySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638889B922983A28006F2B06 /* CurrencySelectorViewController.swift */; };
 		638889BC229BEAAA006F2B06 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638889BB229BEAAA006F2B06 /* PaddingTextField.swift */; };
 		638889BE229C2750006F2B06 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638889BD229C2750006F2B06 /* Connectivity.swift */; };
-		638889C0229C9079006F2B06 /* network.png in Resources */ = {isa = PBXBuildFile; fileRef = 638889BF229C9079006F2B06 /* network.png */; };
 		63B4ACF222964FA800F7D453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B4ACF122964FA800F7D453 /* AppDelegate.swift */; };
 		63B4ACF422964FA800F7D453 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B4ACF322964FA800F7D453 /* ViewController.swift */; };
 		63B4ACF722964FA900F7D453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B4ACF522964FA900F7D453 /* Main.storyboard */; };
@@ -52,7 +51,6 @@
 		638889B922983A28006F2B06 /* CurrencySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelectorViewController.swift; sourceTree = "<group>"; };
 		638889BB229BEAAA006F2B06 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		638889BD229C2750006F2B06 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
-		638889BF229C9079006F2B06 /* network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = network.png; sourceTree = "<group>"; };
 		63B4ACEE22964FA800F7D453 /* currency_converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = currency_converter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B4ACF122964FA800F7D453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B4ACF322964FA800F7D453 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 				638889BD229C2750006F2B06 /* Connectivity.swift */,
 				638889BB229BEAAA006F2B06 /* PaddingTextField.swift */,
 				63B4ACFB22964FAC00F7D453 /* Assets.xcassets */,
-				638889BF229C9079006F2B06 /* network.png */,
 				63B4ACFD22964FAC00F7D453 /* LaunchScreen.storyboard */,
 				63B4AD0022964FAC00F7D453 /* Info.plist */,
 				63B4ACF822964FA900F7D453 /* currency_converter.xcdatamodeld */,
@@ -317,7 +314,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				638889C0229C9079006F2B06 /* network.png in Resources */,
 				63B4ACFF22964FAC00F7D453 /* LaunchScreen.storyboard in Resources */,
 				63B4ACFC22964FAC00F7D453 /* Assets.xcassets in Resources */,
 				63B4ACF722964FA900F7D453 /* Main.storyboard in Resources */,

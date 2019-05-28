@@ -11,7 +11,7 @@ import Alamofire
 
 class Connectivity {
     static let BASE_URL = "https://apilayer.net/api/"
-    static let apiKey = "ADD_YOUR_API_TOKEN_HERE"
+    static let apiKey = "HERE_SHOULD_BE_YOUR_API_TOKEN"
     
     class func isConnectedToInternet() -> Bool {
         return NetworkReachabilityManager()?.isReachable ?? false

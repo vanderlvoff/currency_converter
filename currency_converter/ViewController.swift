@@ -65,14 +65,18 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !Connectivity.isConnectedToInternet() {
-            let alertVC = PMAlertController(title: "Check your internet connection!", description: "", image: UIImage(named: "network.png"), style: .alert)
-            
-            alertVC.addAction(PMAlertAction(title: NSLocalizedString("CLOSE", comment:"close"), style: .cancel, action: { () -> Void in
-            }))
-            
-            self.present(alertVC, animated: true, completion: nil)
-            //            return
+            showConnectivityAlert()
         }
+    }
+    
+    func showConnectivityAlert() {
+        let alertVC = PMAlertController(title: "Check your internet connection!", description: "", image: UIImage(named: "network.png"), style: .alert)
+        
+        alertVC.addAction(PMAlertAction(title: NSLocalizedString("CLOSE", comment:"close"), style: .cancel, action: { () -> Void in
+        }))
+        
+        self.present(alertVC, animated: true, completion: nil)
+        //            return
     }
 
     func addDoneButtonOnKeyboard()
@@ -149,6 +153,7 @@ class ViewController: UIViewController {
     
     func callForCurrencyList() {
         if !Connectivity.isConnectedToInternet() {
+            showConnectivityAlert()
             return
         }
         let url: String = Connectivity.BASE_URL+"list?access_key="+Connectivity.apiKey+"&format=1"
@@ -246,6 +251,7 @@ class ViewController: UIViewController {
             allCurrencyNames.append(key)
             currencyDescriptions[key] = subJson.rawString()!
         }
+
         currencyCollection.reloadData()
     }
     
@@ -285,6 +291,8 @@ class ViewController: UIViewController {
         selectorMode = "from"
         if self.allCurrencyNames.count > 0 {
             performSegue(withIdentifier: "fromToSeg", sender: sender)
+        } else {
+            callForCurrencyList()
         }
     }
     
@@ -396,7 +404,6 @@ extension ViewController: UICollectionViewDataSource {
         }
         
         if currencyNames.indices.contains(indexPath.row) && currencyNames[indexPath.row] == fromName {
-            print("\(currencyNames[indexPath.row]) == \(fromName)")
             cell.backgroundColor = UIColor(rgb: 0x0096FF)
         } else if currencyNames.indices.contains(indexPath.row) && currencyNames[indexPath.row] == toName {
             cell.backgroundColor = UIColor(rgb: 0x4F8F00)

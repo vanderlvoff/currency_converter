@@ -74,7 +74,6 @@ class CurrencySelectorViewController: UIViewController, UITableViewDelegate, UIT
         cell.textLabel?.text = textToShow
         
         if currencyNames.indices.contains(indexPath.row) && currencyNames[indexPath.row] == fromName {
-            print("\(currencyNames[indexPath.row]) == \(fromName)")
             cell.backgroundColor = UIColor(rgb: 0x0096FF)
         } else if currencyNames.indices.contains(indexPath.row) && currencyNames[indexPath.row] == toName {
             cell.backgroundColor = UIColor(rgb: 0x4F8F00)

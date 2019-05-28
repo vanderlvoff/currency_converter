@@ -9,14 +9,13 @@ How to make it working:
 5. In app settings change team accordingly.
 6. Build in simulator or real device and have fun!
 
-### Screenshot 1. Normal mode.
+### First screen
 
-![1FBBB0C1-9FDC-43F6-8F09-BFAA22D3DC9E](https://user-images.githubusercontent.com/16252676/58460915-825a0e80-8169-11e9-9ad7-2f91f949c947.png)
+!<img src="https://user-images.githubusercontent.com/16252676/58506229-ca108280-81c9-11e9-85d1-0a56036be330.PNG" width="200">
+!<img src="https://user-images.githubusercontent.com/16252676/58461211-11ffbd00-816a-11e9-927f-5d21abcbee7e.png" width="200">
+!<img src="https://user-images.githubusercontent.com/16252676/58462477-f6e27c80-816c-11e9-97f1-5b33f06537ca.png" width="200">
 
-### Screenshot 2. Network trouble case.
+### Second screen
 
-![3BE2D1DB-3BAC-4A05-9157-510DEB9F5A5E](https://user-images.githubusercontent.com/16252676/58461211-11ffbd00-816a-11e9-927f-5d21abcbee7e.png)
-
-### Screenshot 2. The one with target currency marked.
-
-![C6E858CF-75E3-4C08-9E9E-E10ECB0B40F0](https://user-images.githubusercontent.com/16252676/58462477-f6e27c80-816c-11e9-97f1-5b33f06537ca.png)
+!<img src="https://user-images.githubusercontent.com/16252676/58506230-caa91900-81c9-11e9-9c14-3bbb39c51ee8.PNG" width="300">
+!<img src="https://user-images.githubusercontent.com/16252676/58506231-caa91900-81c9-11e9-8a0e-7c64bfea1821.PNG" width="300">

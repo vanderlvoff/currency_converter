@@ -34,6 +34,9 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onInputSumeChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="atX-1h-Wbi"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzA-dh-xB1">
                                 <rect key="frame" x="60" y="123" width="137" height="50"/>

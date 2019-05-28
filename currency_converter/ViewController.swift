@@ -58,6 +58,10 @@ class ViewController: UIViewController {
         outputLabel.layer.masksToBounds = true
     }
     
+    @IBAction func onInputSumeChange(_ sender: Any) {
+         save(name: "inputSume", data: inputTextField.text ?? "")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -95,7 +99,6 @@ class ViewController: UIViewController {
         doneToolbar.items = items as? [UIBarButtonItem]
         doneToolbar.sizeToFit()
         
-        self.inputTextField.inputAccessoryView = doneToolbar
         self.inputTextField.inputAccessoryView = doneToolbar
     }
     
@@ -260,29 +263,31 @@ class ViewController: UIViewController {
      */
     func calculateSume() {
         let rateKey = fromName+toName
-
+        var sume: Double = 0.0
         rateToCalculate = fromRates[rateKey] ?? 0.0
         currentRate.text = String(rateToCalculate)
+        let textedValue = (inputTextField.text == "" ? "" : inputTextField.text)!
         
         if rateToCalculate > 0 {
-            let textedValue = (inputTextField.text == "" ? "" : inputTextField.text)!
+
             let textedValueForCalculations = (inputTextField.text == "" ? "0" : inputTextField.text)!
             let numberFormatter = NumberFormatter()
             let number = numberFormatter.number(from: textedValueForCalculations)
             let numberFloatValue = number?.floatValue
             
-            var sume: Double = Double(numberFloatValue!*rateToCalculate)*100
+            sume = Double(numberFloatValue!*rateToCalculate)*100
             sume = sume.rounded(FloatingPointRoundingRule.towardZero)/100
             outputLabel.text = String(sume)
-            
-            currencyModelObj._name = "inputSume"
-            currencyModelObj._jsonData = textedValue
-            currencyModelObj.saveRow()
-            
-            currencyModelObj._name = "outputSume"
-            currencyModelObj._jsonData = String(sume)
-            currencyModelObj.saveRow()
         }
+
+        save(name: "inputSume", data: textedValue)
+        save(name: "outputSume", data: String(sume))
+    }
+    
+    func save(name: String, data: String) {
+        currencyModelObj._name = name
+        currencyModelObj._jsonData = data
+        currencyModelObj.saveRow()
     }
     
     /**

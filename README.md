@@ -11,11 +11,15 @@ How to make it working:
 
 ### First screen
 
-!<img src="https://user-images.githubusercontent.com/16252676/58506229-ca108280-81c9-11e9-85d1-0a56036be330.PNG" width="200">
-!<img src="https://user-images.githubusercontent.com/16252676/58461211-11ffbd00-816a-11e9-927f-5d21abcbee7e.png" width="200">
-!<img src="https://user-images.githubusercontent.com/16252676/58462477-f6e27c80-816c-11e9-97f1-5b33f06537ca.png" width="200">
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16252676/58506229-ca108280-81c9-11e9-85d1-0a56036be330.PNG" width="200">
+<img src="https://user-images.githubusercontent.com/16252676/58461211-11ffbd00-816a-11e9-927f-5d21abcbee7e.png" width="200">
+<img src="https://user-images.githubusercontent.com/16252676/58462477-f6e27c80-816c-11e9-97f1-5b33f06537ca.png" width="200">
+</p>
 
 ### Second screen
 
-!<img src="https://user-images.githubusercontent.com/16252676/58506230-caa91900-81c9-11e9-9c14-3bbb39c51ee8.PNG" width="300">
-!<img src="https://user-images.githubusercontent.com/16252676/58506231-caa91900-81c9-11e9-8a0e-7c64bfea1821.PNG" width="300">
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16252676/58506230-caa91900-81c9-11e9-9c14-3bbb39c51ee8.PNG" width="300">
+<img src="https://user-images.githubusercontent.com/16252676/58506231-caa91900-81c9-11e9-8a0e-7c64bfea1821.PNG" width="300">
+</p>

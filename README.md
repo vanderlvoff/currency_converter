@@ -4,6 +4,14 @@ How to make it working:
 
 1. Checkout project
 2. In the project root run `pod install`
+
+If you have problem installing pods, you might need to update your cocoapods:
+```
+sudo gem update cocoapods --pre
+pod update
+```
+then clean your project folder and build again.
+
 3. Open workspace in your XCode
 4. In [currency_converter/Connectivity.swift](currency_converter/Connectivity.swift) replace `HERE_SHOULD_BE_YOUR_API_TOKEN` with your valid token.
 5. In app settings change team accordingly.

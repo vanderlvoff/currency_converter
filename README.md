@@ -1,4 +1,4 @@
-# This is a simple Currency Converter base on currencylayer API by https://apilayer.com/
+# This is a simple Currency Converter based on currencylayer API by https://apilayer.com/
 
 How to make it working:
 
